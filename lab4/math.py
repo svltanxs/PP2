@@ -20,3 +20,4 @@ print("The area of the polygon is:", round(area, 2))
 base = float(input())
 h = float(input())
 print("Expected Output:", base * h)
+

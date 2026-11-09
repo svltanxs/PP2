@@ -20,7 +20,7 @@ print("With microseconds:   ", now)
 print("Without microseconds:", now.replace(microsecond=0))
 
 # 4
-date1 = datetime(2026, 9, 1, 10, 0, 0)
-date2 = datetime(2026, 9, 29, 12, 30, 0)
-diff_seconds = (date2 - date1).total_seconds()
+date1 = date(2026, 9, 1, 10, 0, 0)
+date2 = date(2026, 9, 29, 12, 30, 0)
+diff_seconds = (date2 - date1)
 print("Difference in seconds:", diff_seconds)

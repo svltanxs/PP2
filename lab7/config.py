@@ -1,18 +1,20 @@
-import os
 from configparser import ConfigParser
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-
-def load_config(filename="database.ini", section="postgresql"):
+def load_config(filename='database.ini', section='postgresql'):
     parser = ConfigParser()
-    parser.read(os.path.join(BASE_DIR, filename))
+    parser.read(filename)
 
-    if not parser.has_section(section):
-        raise Exception(f"Section {section} not found in the {filename} file")
+    # get section, default to postgresql
+    config = {}
+    if parser.has_section(section):
+        params = parser.items(section)
+        for param in params:
+            config[param[0]] = param[1]
+    else:
+        raise Exception('Section {0} not found in the {1} file'.format(section, filename))
 
-    return dict(parser.items(section))
+    return config
 
-
-if __name__ == "__main__":
-    print(load_config())
+if __name__ == '__main__':
+    config = load_config()
+    print(config)
